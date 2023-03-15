@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "459286685926",
+    "firebase_url": "https://tugas-akhir-8784e-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "tugas-akhir-8784e",
+    "storage_bucket": "tugas-akhir-8784e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459286685926:android:2a62eedaf11822c2b53327",
+        "android_client_info": {
+          "package_name": "com.absensii.absensi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459286685926-6k3esi3vi6ji3i1d0remv4jp31ienlsh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.absensii.absensi",
+            "certificate_hash": "88e140d0461d7da604af186925684a5a390a006c"
+          }
+        },
+        {
+          "client_id": "459286685926-cj6u1ka5rhad2sf071oear3a7qkdfeua.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDamdXqohY3vc4XxYKy99ox1lFBGcBDhyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459286685926-cj6u1ka5rhad2sf071oear3a7qkdfeua.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459286685926:android:8175b4cef78d8a4eb53327",
+        "android_client_info": {
+          "package_name": "com.example.presence"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459286685926-cj6u1ka5rhad2sf071oear3a7qkdfeua.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDamdXqohY3vc4XxYKy99ox1lFBGcBDhyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459286685926-cj6u1ka5rhad2sf071oear3a7qkdfeua.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

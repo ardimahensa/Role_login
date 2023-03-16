@@ -1,24 +1,91 @@
+// ignore_for_file: avoid_web_libraries_in_flutter, avoid_print, use_build_context_synchronously
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'components/my_button.dart';
 import 'components/my_textfield.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   // text editing controllers
-  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
+
   final passwordController = TextEditingController();
 
-  // sign user in method
-  void signUserIn() {}
+  // get context => null;
+  void signUserIn() async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+    Navigator.pop(context);
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return Center(
+              child: AlertDialog(
+                content: const Text('Akun tidak terdaftar'),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text('oke'))
+                ],
+              ),
+            );
+          },
+        );
+        print('akun tidak ada');
+      } else if (e.code == 'wrong-password') {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return Center(
+              child: AlertDialog(
+                content: const Text('Password salah'),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text('oke'))
+                ],
+              ),
+            );
+          },
+        );
+        print('Password salah');
+      } else {
+        print('salah');
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[300],
-      body: SafeArea(
-        child: Center(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.grey[300],
+        body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -45,8 +112,8 @@ class LoginPage extends StatelessWidget {
 
               // username textfield
               MyTextField(
-                controller: usernameController,
-                hintText: 'Username',
+                controller: emailController,
+                hintText: 'Email',
                 obscureText: false,
               ),
 
@@ -86,7 +153,7 @@ class LoginPage extends StatelessWidget {
 
               // or continue with
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   children: [
                     Expanded(
@@ -105,7 +172,7 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 50),
+              const SizedBox(height: 10),
 
               // not a member? register now
               Row(
